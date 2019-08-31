@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId "com.android.core.arch"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+
+        debug {
+            buildConfigField "String", "BASE_URL", "\"https://reqres.in/api/\""
+            buildConfigField "int", "CACHE_SIZE", "5242880"
+            buildConfigField "int", "CACHETIME", "432000" // 5days
+            buildConfigField "String", "FEED_BASE_URL", "\"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json\""
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_URL", "\"https://reqres.in/api/\""
+            buildConfigField "int", "CACHE_SIZE", "5242880"
+            buildConfigField "int", "CACHETIME", "432000" // 5days
+            buildConfigField "String", "FEED_BASE_URL", "\"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json\""
+
+
+        }
+
+
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:$rootProject.androidxVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.androidxVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.core:core-ktx:1.0.1"
+
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
+    // database
+    implementation "androidx.room:room-runtime:$rootProject.roomDatabase"
+    kapt "androidx.room:room-compiler:$rootProject.roomDatabase"
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$rootProject.retrofitVersion"
+
+    // logger
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
+
+    //Play service
+    implementation "com.google.android.gms:play-services-auth:$rootProject.playService"
+    implementation "com.google.android.gms:play-services-location:$rootProject.playService"
+
+
+    testImplementation "junit:junit:$rootProject.junitVersion"
+
+    // Core library
+    androidTestImplementation "androidx.test:core:$rootProject.testVersion"
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
+
+    // Assertions
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.testVersion"
+
+    // Espresso dependencies
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+}
+repositories {
+    mavenCentral()
+}

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndroidCoreArch</string>
+    <string name="no_title">No Title</string>
+    <string name="content_not_found">Content not found.</string>
+    <string name="feed_not_available">Feed not available right now.</string>
+    <string name="fail_to_load_latest_feeds">Fail to load latest feeds.</string>
+    <string name="try_again">Try again</string>
+    <string name="app_google_play_store_link">"https://play.google.com/store/apps/details?id="</string>
+    <string name="app_market_link">"market://details?id="</string>
+</resources>
